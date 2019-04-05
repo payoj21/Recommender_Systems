@@ -68,22 +68,23 @@ class test_NaiveBayes(unittest.TestCase):
         self.assertAlmostEqual(0.5, nb_table.user_prob(1, liked=True), 5,
                                "User 1 liked probability incorrect")
         # TODO: HOMEWORK 4. Put correct calculated value here
-        self.assertAlmostEqual(0, nb_table.user_prob(3, liked=True), 5,
+        self.assertAlmostEqual(0.334437, nb_table.user_prob(3, liked=True), 5,
                                "User 3 liked probability incorrect")
         self.assertAlmostEqual(0.5, nb_table.user_prob(1, liked=False), 5,
                                "User 1 disliked probability incorrect")
         # TODO: HOMEWORK 4. Put correct calculated value here
-        self.assertAlmostEqual(0, nb_table.user_prob(5, liked=False), 5,
+        self.assertAlmostEqual(0.0033112, nb_table.user_prob(5, liked=False), 5,
                                "User 5 disliked probability incorrect")
 
     # Test conditional probability calculations
     def test_cond_prob(self):
         nb_table = self._algo._nb_table
         # TODO: HOMEWORK 4. Put correct calculated value here
-        self.assertAlmostEqual(0, nb_table.user_feature_prob(1, 'D', liked=True), 5,
+        self.assertAlmostEqual(0.990196, nb_table.user_feature_prob(1, 'D', liked=True), 5,
                                "User 1 liked feature prob D incorrect")
         self.assertAlmostEqual(0.009803922, nb_table.user_feature_prob(1, 'G', liked=False), 5,
                                "User 1 disliked feature prob G incorrect")
+        
 
     # Test score User 3 Item 5
     def test_pred1(self):
@@ -94,15 +95,15 @@ class test_NaiveBayes(unittest.TestCase):
     # Test score User 1 Item 5
     def test_pred2(self):
         score = self._algo.score_item(1, 5)
-        # TODO: HOMEWORK 4. Put correct calculated value here
-        self.assertAlmostEqual(0, score, 5,
+#         TODO: HOMEWORK 4. Put correct calculated value here
+        self.assertAlmostEqual(3.931825, score, 5,
                                'User 1 item 5 prediction incorrect')
 
     # Test score User 5 Item 2
     def test_pred3(self):
         score = self._algo.score_item(5, 2)
         # TODO: HOMEWORK 4. Put correct calculated value here
-        self.assertAlmostEqual(0, score, 5,
+        self.assertAlmostEqual(6.161364, score, 5,
                                'User 5 item 2 prediction incorrect')
 
     def test_recommend(self):
